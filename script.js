@@ -404,6 +404,47 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ──────────────────────────────────────
+     PACKAGES — DYNAMIC HIGHLIGHTING
+  ────────────────────────────────────── */
+  const pkgCards = document.querySelectorAll('.pkg-card');
+  const pkgGrid = document.querySelector('.packages-grid');
+
+  function resetHighlightOnFormClose() {
+    if (!pkgGrid) return;
+    const isMouseInGrid = pkgGrid.matches(':hover');
+    if (!isMouseInGrid) {
+      // If any form is active, keep that card featured
+      const activeFormCard = Array.from(pkgCards).find(c => c.classList.contains('form-active'));
+      pkgCards.forEach(c => c.classList.remove('pkg-featured'));
+      if (activeFormCard) {
+        activeFormCard.classList.add('pkg-featured');
+      }
+    }
+  }
+
+  if (pkgGrid) {
+    pkgCards.forEach((card) => {
+      card.addEventListener('mouseenter', () => {
+        // Prevent highlight shifting if any form is active
+        const anyFormActive = Array.from(pkgCards).some(c => c.classList.contains('form-active'));
+        if (!anyFormActive) {
+          pkgCards.forEach(c => c.classList.remove('pkg-featured'));
+          card.classList.add('pkg-featured');
+        }
+      });
+    });
+
+    pkgGrid.addEventListener('mouseleave', () => {
+      // Only reset to empty if no form is currently being filled
+      const activeFormCard = Array.from(pkgCards).find(c => c.classList.contains('form-active'));
+      pkgCards.forEach(c => c.classList.remove('pkg-featured'));
+      if (activeFormCard) {
+        activeFormCard.classList.add('pkg-featured');
+      }
+    });
+  }
+
+  /* ──────────────────────────────────────
      PACKAGES — FORM LOGIC
   ────────────────────────────────────── */
   document.querySelectorAll('.pkg-card').forEach(card => {
@@ -412,19 +453,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = card.querySelector('.pkg-form');
     const formOverlay = card.querySelector('.pkg-form-overlay');
 
+    const closeForm = () => {
+      card.classList.remove('form-active');
+      if (form) {
+        form.reset();
+        form.classList.remove('show-errors');
+      }
+      setTimeout(resetHighlightOnFormClose, 50);
+    };
+
     if (mainBtn) {
       mainBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (form) form.reset();
         card.classList.add('form-active');
+        // Ensure this card is featured when form opens
+        pkgCards.forEach(c => c.classList.remove('pkg-featured'));
+        card.classList.add('pkg-featured');
       });
     }
 
     if (closeBtn) {
       closeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        card.classList.remove('form-active');
-        if (form) form.reset();
+        closeForm();
       });
     }
 
@@ -432,23 +484,49 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formOverlay) {
       formOverlay.addEventListener('click', (e) => {
         if (e.target === formOverlay) {
-          card.classList.remove('form-active');
-          if (form) form.reset();
+          closeForm();
         }
       });
     }
 
     if (form) {
+      const inputs = form.querySelectorAll('input[required]');
+      
+      // Custom validation message
+      inputs.forEach(input => {
+        input.oninvalid = function(e) {
+          e.target.setCustomValidity("");
+          if (!e.target.validity.valid) {
+            e.target.setCustomValidity("This field is mandatory");
+          }
+        };
+        input.oninput = function(e) {
+          e.target.setCustomValidity("");
+        };
+      });
+
+      const submitBtn = form.querySelector('.pkg-form-submit');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', () => {
+          if (!form.checkValidity()) {
+            form.classList.add('show-errors');
+            // Trigger shake on form overlay
+            formOverlay.classList.remove('shake');
+            void formOverlay.offsetWidth;
+            formOverlay.classList.add('shake');
+          }
+        });
+      }
+
       form.addEventListener('submit', (e) => {
         e.preventDefault();
+        if (card.id === 'customPkgCard') return;
+
         const formData = new FormData(form);
         const businessName = formData.get('businessName');
         const phone = formData.get('phone');
         const email = formData.get('email');
         const pkgName = card.dataset.package;
-
-        // Skip custom package — has its own handler
-        if (card.id === 'customPkgCard') return;
 
         const text = encodeURIComponent(
           `*Package Inquiry: ${pkgName}*\n\n` +
@@ -457,15 +535,8 @@ document.addEventListener('DOMContentLoaded', () => {
           `*Email:* ${email}\n\n` +
           `I'm interested in the ${pkgName}. Please get back to me.`
         );
-
-        // Open WhatsApp
         window.open(`https://wa.me/918807838134?text=${text}`, '_blank');
-
-        // Reset and close
-        setTimeout(() => {
-          form.reset();
-          card.classList.remove('form-active');
-        }, 500);
+        setTimeout(closeForm, 500);
       });
     }
   });
@@ -517,8 +588,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Open form overlay
     customCard.classList.add('form-active');
+    // Ensure this card is featured
+    pkgCards.forEach(c => c.classList.remove('pkg-featured'));
+    customCard.classList.add('pkg-featured');
     updateCustomState(); // refresh selected services field
   });
+
+  const closeCustomForm = () => {
+    customCard.classList.remove('form-active');
+    customForm.reset();
+    customForm.classList.remove('show-errors');
+    customCheckboxes.forEach(cb => cb.checked = false);
+    updateCustomState();
+    setTimeout(resetHighlightOnFormClose, 50);
+  };
 
   // Custom form submit → WhatsApp
   customForm.addEventListener('submit', (e) => {
@@ -541,12 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(`https://wa.me/918807838134?text=${msg}`, '_blank');
 
     // Reset and close
-    setTimeout(() => {
-      customForm.reset();
-      customCheckboxes.forEach(cb => cb.checked = false);
-      updateCustomState();
-      customCard.classList.remove('form-active');
-    }, 500);
+    setTimeout(closeCustomForm, 500);
   });
 
   /* ──────────────────────────────────────

@@ -884,7 +884,7 @@ button {
 .pkg-card {
   background: var(--white);
   border-radius: 20px;
-  padding: 28px 24px;
+  padding: 36px 24px 28px;
   border: 1px solid var(--border);
   transition: var(--transition);
   position: relative;
@@ -906,20 +906,33 @@ button {
 .pkg-featured {
   background: linear-gradient(145deg, var(--accent) 0%, #5a1a26 100%);
   border-color: transparent;
-  padding-top: 36px;
 }
 
 .pkg-featured * {
   color: var(--white) !important;
 }
 
-.pkg-featured .pkg-service {
+.pkg-featured .pkg-service,
+.pkg-featured .custom-cb-label {
   border-color: rgba(255, 255, 255, .2) !important;
   background: rgba(255, 255, 255, .06) !important;
 }
 
 .pkg-featured .pkg-plus {
   color: rgba(255, 255, 255, .4) !important;
+}
+
+.pkg-featured .custom-cb-box {
+  border-color: rgba(255, 255, 255, .4) !important;
+}
+
+.pkg-featured .custom-cb:checked + .custom-cb-box {
+  background: var(--white) !important;
+  border-color: var(--white) !important;
+}
+
+.pkg-featured .custom-cb:checked + .custom-cb-box::after {
+  border-color: var(--accent) !important;
 }
 
 .pkg-featured .pkg-features li::before {
@@ -951,6 +964,13 @@ button {
   letter-spacing: 1px;
   padding: 4px 16px;
   border-radius: 0 0 10px 10px;
+  transition: var(--transition);
+  z-index: 5;
+}
+
+.pkg-featured .pkg-badge {
+  background: var(--white);
+  color: var(--accent) !important;
 }
 
 .pkg-header {
@@ -1156,17 +1176,16 @@ button {
 
 
 
-.pkg-form .form-group {
-  margin-bottom: 16px;
-  text-align: left;
+.pkg-form label::after {
+  content: ' *';
+  color: var(--accent);
+  font-weight: 700;
 }
 
-.pkg-form label {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: var(--black);
+.pkg-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  position: relative;
 }
 
 .pkg-form input {
@@ -1185,6 +1204,15 @@ button {
   border-bottom-color: var(--accent);
 }
 
+/* Validation Styling */
+.pkg-form input:invalid:not(:placeholder-shown) {
+  border-bottom-color: #ff4d4d;
+}
+
+.pkg-form.show-errors input:invalid {
+  border-bottom-color: #ff4d4d;
+}
+
 .pkg-form-submit {
   width: 100%;
   height: 48px;
@@ -1195,6 +1223,8 @@ button {
   font-weight: 600;
   margin-top: 20px;
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
 .pkg-form-submit:hover {
@@ -1202,6 +1232,11 @@ button {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(122, 38, 54, .2);
 }
+
+.pkg-form-submit:active {
+  transform: translateY(0);
+}
+
 
 /* ═══════════════════════════════════════════
    CUSTOM PACKAGE CARD
@@ -1996,6 +2031,42 @@ button {
   .slide-label {
     font-size: 14px;
     padding: 7px 18px;
+  }
+
+  /* Service Detail Modal: Even smaller and higher for Tablet */
+  .modal-overlay {
+    align-items: flex-start;
+    padding-top: 40px; /* Reduced from clamp to move it even higher */
+  }
+
+  .sd-modal-box {
+    max-width: 440px; /* Reduced from 500px */
+    padding: 30px 24px; /* Reduced padding */
+    margin-bottom: 20px;
+  }
+
+  .sd-title {
+    font-size: 26px; /* Further reduced */
+  }
+
+  .sd-desc {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .sd-icon {
+    width: 48px; /* Further reduced */
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  .sd-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .sd-modal-footer {
+    margin-top: 24px;
   }
 
   /* Service Detail Modal We Do: One column for Tablet */
