@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Mugavari</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a href="#" class="logo">
+        <div class="logo-inner">
+          <img src="images/DM%20Web%20Logo.png" alt="Digital Mugavari Logo" class="logo-img" />
+          <span class="logo-tagline">Clicks. Leads. Conversions.</span>
+        </div>
+      </a>
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <div class="search-bar">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search our services…" autocomplete="off" />
+          <button class="search-btn">
+            <svg class="search-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <span class="search-btn-text">Search</span>
+          </button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+
+      <!-- Contact -->
+      <div class="header-contact-wrap">
+        <a href="mailto:digitalmugavari@gmail.com" class="header-contact">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          <span class="contact-label">digitalmugavari@gmail.com</span>
+        </a>
+        <a href="https://wa.me/918807838134" target="_blank" class="header-contact header-whatsapp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 0 1-4.106-1.138l-.286-.171-2.97.883.883-2.97-.187-.297A7.96 7.96 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" />
+          </svg>
+          <span class="contact-label">+91 88078 38134</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════ SERVICES NAV TABS ═══════════════ -->
+  <nav class="services-nav" id="services-nav">
+    <div class="services-nav-inner">
+      <a href="#" class="snav-link service-tab" data-service="Website Development">Website Development</a>
+      <a href="#" class="snav-link service-tab" data-service="Digital Marketing">Digital Marketing</a>
+      <a href="#" class="snav-link service-tab" data-service="Search Engine Optimization">Search Engine Optimization</a>
+      <a href="#" class="snav-link service-tab" data-service="Branding">Branding</a>
+      <a href="#" class="snav-link service-tab" data-service="Influencer Marketing">Influencer Marketing</a>
+      <a href="#" class="snav-link service-tab" data-service="Graphic Design">Graphic Design</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ SERVICE DETAIL MODAL ═══════════════ -->
+  <div class="modal-overlay" id="servicesModal">
+    <div class="modal-box sd-modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <div class="sd-modal-content">
+        <div class="sd-icon" id="sdIcon"></div>
+        <h2 class="sd-title" id="sdTitle">Service Name</h2>
+        <p class="sd-desc" id="sdDesc">Service description goes here.</p>
+        <div class="sd-we-do" id="sdWeDo"></div>
+        <button class="sd-cta" id="sdCta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M11.999 2C6.477 2 2 6.477 2 12c0 1.99.574 3.842 1.562 5.406L2 22l4.703-1.538C8.146 21.449 10.023 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
+          </svg>
+          Inquire Now
+        </button>
+        <div class="sd-modal-footer">
+          <a href="mailto:digitalmugavari@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            digitalmugavari@gmail.com
+          </a>
+          <a href="tel:+918807838134">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+              <path
+                d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 0 1-4.106-1.138l-.286-.171-2.97.883.883-2.97-.187-.297A7.96 7.96 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" />
+            </svg>
+            +91 88078 38134
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ HERO CAROUSEL ═══════════════ -->
+  <section class="hero-carousel" id="hero">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide slide-1">
+        <div class="slide-content">
+          <span class="slide-label">Premium Digital Agency</span>
+          <h1 class="slide-title">We Build Brands<br />That Dominate</h1>
+          <p class="slide-sub">Strategic marketing & design for ambitious businesses ready to lead their market.</p>
+          <a href="#packages" class="slide-cta">Explore Packages <span>→</span></a>
+        </div>
+      </div>
+      <div class="carousel-slide slide-2">
+        <div class="slide-content">
+          <span class="slide-label">Search Engine Optimization</span>
+          <h1 class="slide-title">Rank #1.<br />Every Time.</h1>
+          <p class="slide-sub">Our SEO strategies have driven over 10M+ organic impressions for clients across
+            industries.</p>
+          <a href="#packages" class="slide-cta">Get Started <span>→</span></a>
+        </div>
+      </div>
+      <div class="carousel-slide slide-3">
+        <div class="slide-content">
+          <span class="slide-label">Branding & Identity</span>
+          <h1 class="slide-title">Build a Brand<br />That Lasts.</h1>
+          <p class="slide-sub">Strategic branding that creates an emotional connection and builds lasting trust with
+            your target audience.</p>
+          <a href="#packages" class="slide-cta">Get Started <span>→</span></a>
+        </div>
+      </div>
+      <div class="carousel-slide slide-4">
+        <div class="slide-content">
+          <span class="slide-label">Website Development</span>
+          <h1 class="slide-title">Websites That<br />Convert.</h1>
+          <p class="slide-sub">Beautiful, fast, and persuasive websites engineered to turn visitors into paying
+            customers.</p>
+          <a href="#contact" class="slide-cta">Start a Project <span>→</span></a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-btn carousel-prev" id="carouselPrev">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+    <button class="carousel-btn carousel-next" id="carouselNext">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </button>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </section>
+
+
+  <!-- ═══════════════ COMBO PACKAGES ═══════════════ -->
+  <section class="packages-section" id="packages">
+    <div class="section-inner stagger-parent">
+      <div class="section-label reveal reveal-up">Bundle & Save</div>
+      <h2 class="section-title reveal reveal-up">Power Packages</h2>
+      <p class="section-desc reveal reveal-up">Hand-picked service combinations designed to accelerate your growth at
+        every stage.</p>
+      <div class="packages-grid">
+
+        <div class="pkg-card reveal reveal-up" data-package="Growth Package">
+          <div class="pkg-header">
+            <span class="pkg-service">SEO</span>
+            <span class="pkg-plus">+</span>
+            <span class="pkg-service">Website</span>
+            <span class="pkg-eq">=</span>
+          </div>
+          <h3 class="pkg-name">Growth Package</h3>
+          <p class="pkg-desc">Rank high and convert hard. An SEO-optimised website that drives organic traffic and turns
+            visitors into customers.</p>
+          <ul class="pkg-features">
+            <li>Technical SEO Audit</li>
+            <li>Keyword Strategy</li>
+            <li>Custom Website Build</li>
+            <li>Monthly Performance Report</li>
+          </ul>
+          <div class="pkg-price">₹25,000</div>
+          <button class="pkg-cta">Get This Package</button>
+
+          <!-- Form Overlay -->
+          <div class="pkg-form-overlay">
+            <button class="pkg-form-close">&times;</button>
+            <form class="pkg-form">
+              <h4 class="pkg-form-title">Growth Package</h4>
+              <p class="pkg-form-sub">Fill out the form and we'll get back to you soon.</p>
+              <div class="form-group">
+                <label>Business Name</label>
+                <input type="text" name="businessName" placeholder="Your Company Name" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your@email.com" required>
+              </div>
+              <button type="submit" class="pkg-form-submit">Submit →</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="pkg-card pkg-featured reveal reveal-up" data-package="Marketing Package">
+          <div class="pkg-badge">Most Popular</div>
+          <div class="pkg-header">
+            <span class="pkg-service">Social Media</span>
+            <span class="pkg-plus">+</span>
+            <span class="pkg-service">Ads</span>
+            <span class="pkg-eq">=</span>
+          </div>
+          <h3 class="pkg-name">Marketing Package</h3>
+          <p class="pkg-desc">Full-funnel social presence paired with precision-targeted paid ads that maximise reach
+            and revenue.</p>
+          <ul class="pkg-features">
+            <li>Social Media Management</li>
+            <li>Content Calendar</li>
+            <li>Google & Meta Ads</li>
+            <li>ROI Dashboard</li>
+          </ul>
+          <div class="pkg-price">₹40,000</div>
+          <button class="pkg-cta">Get This Package</button>
+
+          <!-- Form Overlay -->
+          <div class="pkg-form-overlay">
+            <button class="pkg-form-close">&times;</button>
+            <form class="pkg-form">
+              <h4 class="pkg-form-title">Marketing Package</h4>
+              <p class="pkg-form-sub">Fill out the form and we'll get back to you soon.</p>
+              <div class="form-group">
+                <label>Business Name</label>
+                <input type="text" name="businessName" placeholder="Your Company Name" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your@email.com" required>
+              </div>
+              <button type="submit" class="pkg-form-submit">Submit →</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="pkg-card reveal reveal-up" data-package="Startup Package">
+          <div class="pkg-header">
+            <span class="pkg-service">Branding</span>
+            <span class="pkg-plus">+</span>
+            <span class="pkg-service">Website</span>
+            <span class="pkg-eq">=</span>
+          </div>
+          <h3 class="pkg-name">Startup Package</h3>
+          <p class="pkg-desc">Launch with confidence. A powerful brand identity and a polished website that makes a
+            lasting first impression.</p>
+          <ul class="pkg-features">
+            <li>Logo & Brand Identity</li>
+            <li>Brand Guidelines</li>
+            <li>5-Page Website</li>
+            <li>1 Month Support</li>
+          </ul>
+          <div class="pkg-price">₹60,000+</div>
+          <button class="pkg-cta">Get This Package</button>
+
+          <!-- Form Overlay -->
+          <div class="pkg-form-overlay">
+            <button class="pkg-form-close">&times;</button>
+            <form class="pkg-form">
+              <h4 class="pkg-form-title">Startup Package</h4>
+              <p class="pkg-form-sub">Fill out the form and we'll get back to you soon.</p>
+              <div class="form-group">
+                <label>Business Name</label>
+                <input type="text" name="businessName" placeholder="Your Company Name" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your@email.com" required>
+              </div>
+              <button type="submit" class="pkg-form-submit">Submit →</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="pkg-card reveal reveal-up" data-package="Custom Package" id="customPkgCard">
+          <h3 class="pkg-name">Custom Package</h3>
+          <p class="pkg-desc">Build your own package. Pick the services that matter most to your business and get a
+            tailored quote.</p>
+          <div class="custom-pkg-header">
+            <div class="custom-checkboxes">
+              <label class="custom-cb-label">
+                <input type="checkbox" class="custom-cb" value="Website Development">
+                <span class="custom-cb-box"></span>
+                <span class="custom-cb-text">Website Development</span>
+              </label>
+              <label class="custom-cb-label">
+                <input type="checkbox" class="custom-cb" value="Digital Marketing">
+                <span class="custom-cb-box"></span>
+                <span class="custom-cb-text">Digital Marketing</span>
+              </label>
+              <label class="custom-cb-label">
+                <input type="checkbox" class="custom-cb" value="Search Engine Optimization">
+                <span class="custom-cb-box"></span>
+                <span class="custom-cb-text">Search Engine Optimization</span>
+              </label>
+              <label class="custom-cb-label">
+                <input type="checkbox" class="custom-cb" value="Branding">
+                <span class="custom-cb-box"></span>
+                <span class="custom-cb-text">Branding</span>
+              </label>
+              <label class="custom-cb-label">
+                <input type="checkbox" class="custom-cb" value="Influencer Marketing">
+                <span class="custom-cb-box"></span>
+                <span class="custom-cb-text">Influencer Marketing</span>
+              </label>
+              <label class="custom-cb-label">
+                <input type="checkbox" class="custom-cb" value="Graphic Design">
+                <span class="custom-cb-box"></span>
+                <span class="custom-cb-text">Graphic Design</span>
+              </label>
+            </div>
+            <div class="custom-counter" id="customCounter">0 services selected</div>
+          </div>
+          <div class="pkg-price">Custom Pricing</div>
+          <button class="pkg-cta custom-cta" id="customCta" disabled>Get Custom Quote</button>
+
+          <!-- Form Overlay -->
+          <div class="pkg-form-overlay">
+            <button class="pkg-form-close">&times;</button>
+            <form class="pkg-form" id="customPkgForm">
+              <h4 class="pkg-form-title">Custom Package</h4>
+              <p class="pkg-form-sub">Fill out the form and we'll get back to you soon.</p>
+              <div class="form-group">
+                <label>Selected Services</label>
+                <input type="text" name="selectedServices" id="customSelectedField" readonly
+                  class="custom-selected-input">
+              </div>
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" name="customerName" placeholder="Your Full Name" required>
+              </div>
+              <div class="form-group">
+                <label>Business Name</label>
+                <input type="text" name="businessName" placeholder="Your Company Name" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your@email.com" required>
+              </div>
+              <button type="submit" class="pkg-form-submit">Submit →</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLIENT LOGOS MARQUEE ═══════════════ -->
+  <section class="clients-section" id="clients">
+    <div class="section-inner">
+      <div class="section-label reveal reveal-up">Trusted By</div>
+      <h2 class="section-title reveal reveal-up">Our Clients</h2>
+    </div>
+    <div class="clients-display stagger-parent">
+      <div class="client-brand-item reveal reveal-scale">
+        <img src="images/clients/PRC Logo Web.png" alt="PRC Logo" class="client-brand-img" />
+      </div>
+      <div class="client-brand-item reveal reveal-scale">
+        <img src="images/clients/BBX  Logo.webp" alt="BBX Logo" class="client-brand-img" />
+      </div>
+      <div class="client-brand-item reveal reveal-scale">
+        <span class="client-brand-text">Brightwyn</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="section-inner stagger-parent">
+      <div class="section-label reveal reveal-up">Social Proof</div>
+      <h2 class="section-title reveal reveal-up">What Clients Say</h2>
+      <p class="section-desc reveal reveal-up">Real results, real voices — from businesses that chose to grow with
+        Digital Mugavari.</p>
+    </div>
+    <div class="testi-carousel-wrap">
+      <button class="testi-btn testi-prev" id="testiPrev">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+      <div class="testi-track-outer">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card reveal reveal-up">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">Digital Mugavari transformed our online presence completely. Our organic traffic
+              tripled in just 4 months. They truly understand modern SEO at a deep level.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">RK</div>
+              <div>
+                <div class="testi-name">Rahul Krishnan</div>
+                <div class="testi-company">TechNova Solutions</div>
+              </div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testi-card reveal reveal-up">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">The social media team at DM is exceptional. Our engagement rates went through the roof
+              and we launched our product to a fully warmed-up audience. Game-changer.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">PS</div>
+              <div>
+                <div class="testi-name">Priya Sharma</div>
+                <div class="testi-company">ZenBrands Co.</div>
+              </div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testi-card reveal reveal-up">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">We chose the Startup Package and could not be more pleased. Our new brand and website
+              look like a ₹50L investment. Professional, sharp, and delivered on time.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">AM</div>
+              <div>
+                <div class="testi-name">Aditya Mehta</div>
+                <div class="testi-company">BuildBright Infra</div>
+              </div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testi-card reveal reveal-up">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">The performance marketing results speak for themselves — 4.2x ROAS in the first
+              campaign. The team is data-obsessed and they deliver exactly what they promise.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">SV</div>
+              <div>
+                <div class="testi-name">Sneha Varma</div>
+                <div class="testi-company">NexaRetail</div>
+              </div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="testi-card reveal reveal-up">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">Content strategy, video production and email — all under one roof and perfectly
+              coordinated. Our campaigns finally feel cohesive and our revenue reflects it.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">KN</div>
+              <div>
+                <div class="testi-name">Karan Nair</div>
+                <div class="testi-company">GrowthLab Ventures</div>
+              </div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="testi-btn testi-next" id="testiNext">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+  </section>
+
+  <!-- ═══════════════ CONTACT CTA ═══════════════ -->
+  <section class="contact-cta" id="contact">
+    <div class="cta-inner">
+      <div class="section-label reveal reveal-up">Let's Talk</div>
+      <h2 class="cta-title reveal reveal-up">Ready to Grow?</h2>
+      <p class="cta-sub reveal reveal-up">Tell us about your brand and we'll craft a custom strategy within 24 hours.
+      </p>
+      <div class="cta-actions reveal reveal-up">
+        <a href="mailto:digitalmugavari@gmail.com" class="cta-btn-primary">Email Us</a>
+        <a href="https://wa.me/918807838134?text=Hello%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20Digital%20Mugavari."
+          target="_blank" class="cta-btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M11.999 2C6.477 2 2 6.477 2 12c0 1.99.574 3.842 1.562 5.406L2 22l4.703-1.538C8.146 21.449 10.023 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
+          </svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-col footer-brand reveal reveal-left">
+        <a href="#" class="logo footer-logo">
+          <img src="images/DM%20Web%20Logo.png" alt="Digital Mugavari Logo" class="logo-img" />
+        </a>
+        <p class="footer-tagline">We build brands that dominate their markets through strategic digital marketing.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col reveal reveal-up">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col reveal reveal-up">
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="#">Website Development</a></li>
+          <li><a href="#">Digital Marketing</a></li>
+          <li><a href="#">Search Engine Optimization</a></li>
+          <li><a href="#">Branding</a></li>
+          <li><a href="#">Influencer Marketing</a></li>
+          <li><a href="#">Graphic Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col reveal reveal-up">
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-links">
+          <li><strong>Email:</strong> <a href="mailto:digitalmugavari@gmail.com">digitalmugavari@gmail.com</a></li>
+          <li><strong>Call:</strong> <a href="tel:+918807838134">+91 88078 38134</a></li>
+          <li><strong>Location:</strong> Pondicherry, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Digital Mugavari. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
