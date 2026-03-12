@@ -1767,13 +1767,15 @@ button {
 ═══════════════════════════════════════════ */
 .site-footer {
   background: #5a1a26;
-  padding: 30px 0 0;
+  padding: 0;
+  margin-top: -1px;
+  border-top: none;
 }
 
 .footer-inner {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 32px 56px;
+  padding: 30px 32px 56px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 40px;
@@ -1781,6 +1783,7 @@ button {
 }
 
 .footer-logo .logo-img {
+  height: 70px;
   filter: none;
 }
 
@@ -1931,6 +1934,10 @@ button {
     height: 44px;
   }
 
+  .footer-logo .logo-img {
+    height: 85px;
+  }
+
   .logo-tagline {
     font-size: 9px;
   }
@@ -1990,6 +1997,56 @@ button {
     font-size: 14px;
     padding: 7px 18px;
   }
+
+  /* Service Detail Modal We Do: One column for Tablet */
+  .we-do-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .we-do-item {
+    font-size: 14px;
+    padding: 6px 0;
+  }
+
+  /* Custom Package Checkboxes: Single column, compact, no scroll */
+  .custom-checkboxes {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+  }
+
+  .custom-cb-label {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 6px 10px;
+    font-size: 11px;
+    border-width: 1px;
+  }
+
+  /* Compact Custom Card to maintain height */
+  #customPkgCard {
+    padding: 22px 20px;
+  }
+  #customPkgCard .pkg-name {
+    margin-bottom: 4px;
+    font-size: 22px;
+  }
+  #customPkgCard .pkg-desc {
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .custom-pkg-header {
+    margin-bottom: 12px;
+  }
+  .custom-counter {
+    margin-top: 6px;
+    font-size: 10px;
+  }
 }
 
 /* ════════════════════════════════════════════
@@ -2007,6 +2064,10 @@ button {
 
   .logo-img {
     height: 42px;
+  }
+
+  .footer-logo .logo-img {
+    height: 80px;
   }
 
   /* Push contact to right of first row */
@@ -2188,6 +2249,24 @@ button {
     gap: 32px;
   }
 
+  .footer-brand {
+    order: 1;
+    grid-column: 1 / -1;
+  }
+
+  .footer-links-col {
+    order: 2;
+  }
+
+  .footer-services-col {
+    order: 3;
+  }
+
+  .footer-contact-col {
+    order: 4;
+    grid-column: 1 / -1;
+  }
+
   .footer-bottom {
     flex-direction: column;
     gap: 12px;
@@ -2212,6 +2291,10 @@ button {
 
   .logo-img {
     height: 40px;
+  }
+
+  .footer-logo .logo-img {
+    height: 75px;
   }
 
   .logo-tagline {
@@ -2347,6 +2430,24 @@ button {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
     gap: 32px 20px;
+  }
+
+  .footer-brand {
+    order: 1;
+    grid-column: 1 / -1;
+  }
+
+  .footer-links-col {
+    order: 2;
+  }
+
+  .footer-services-col {
+    order: 3;
+  }
+
+  .footer-contact-col {
+    order: 4;
+    grid-column: 1 / -1;
   }
 
   /* 900px packages fallback for this range */
@@ -2635,4 +2736,3 @@ button {
 .stagger-parent .reveal {
   transition-delay: calc(var(--stagger-idx, 0) * 0.1s);
 }
-
