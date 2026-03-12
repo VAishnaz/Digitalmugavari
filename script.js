@@ -525,10 +525,17 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const formData = new FormData(customForm);
     const services = getSelectedServices().join(', ');
-    const customerName = formData.get('customerName');
+    const businessName = formData.get('businessName');
+    const phone = formData.get('phone');
+    const email = formData.get('email');
 
     const msg = encodeURIComponent(
-      `Hi, I'm interested in a custom package: ${services}. My name is ${customerName}.`
+      `*Custom Package Inquiry*\n\n` +
+      `*Services:* ${services}\n` +
+      `*Business Name:* ${businessName}\n` +
+      `*Phone:* ${phone}\n` +
+      `*Email:* ${email}\n\n` +
+      `Hi, I'm interested in a custom package with the selected services. Please get back to me.`
     );
 
     window.open(`https://wa.me/918807838134?text=${msg}`, '_blank');

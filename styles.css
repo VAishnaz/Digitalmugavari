@@ -689,16 +689,16 @@ button {
 
 .slide-label {
   display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--white);
   background: rgba(122, 38, 54, 0.25);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(184, 106, 121, 0.4);
-  padding: 6px 16px;
+  padding: 8px 20px;
   border-radius: 50px;
   margin-bottom: 22px;
 }
@@ -858,12 +858,17 @@ button {
    PACKAGES
 ═══════════════════════════════════════════ */
 .packages-section {
-  padding: 50px 0;
+  padding: 15px 0 20px;
   background: var(--light);
 }
 
 .packages-section .section-inner {
+  text-align: center;
   margin-bottom: 32px;
+}
+
+.packages-section .section-desc {
+  margin: 0 auto 40px;
 }
 
 .packages-grid {
@@ -888,6 +893,7 @@ button {
   min-height: 480px;
   display: flex;
   flex-direction: column;
+  text-align: left;
   --hover-transform: translateY(-6px);
 }
 
@@ -1095,43 +1101,22 @@ button {
   visibility: hidden;
   transform: translateY(10px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Compact form for custom package card */
-#customPkgCard .pkg-form-overlay {
-  padding: 24px 20px;
+.pkg-form-overlay::-webkit-scrollbar {
+  display: none;
 }
 
-#customPkgCard .pkg-form-title {
-  font-size: 22px;
-  margin-bottom: 2px;
-}
-
-#customPkgCard .pkg-form-sub {
-  font-size: 12px;
-  margin-bottom: 14px;
-}
-
-#customPkgCard .pkg-form .form-group {
-  margin-bottom: 10px;
-}
-
-#customPkgCard .pkg-form label {
-  font-size: 11px;
-  margin-bottom: 3px;
-}
-
-#customPkgCard .pkg-form input {
-  padding: 8px 0;
+.pkg-form-sub {
   font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 24px;
 }
 
-#customPkgCard .pkg-form-submit {
-  height: 42px;
-  font-size: 13px;
-  margin-top: 12px;
-}
+
 
 .pkg-card.form-active .pkg-form-overlay {
   opacity: 1;
@@ -1169,11 +1154,7 @@ button {
   margin-bottom: 4px;
 }
 
-.pkg-form-sub {
-  font-size: 13px;
-  color: var(--gray);
-  margin-bottom: 24px;
-}
+
 
 .pkg-form .form-group {
   margin-bottom: 16px;
@@ -1225,6 +1206,36 @@ button {
 /* ═══════════════════════════════════════════
    CUSTOM PACKAGE CARD
 ═══════════════════════════════════════════ */
+/* Compact spacing for Custom Package form (extra "Selected Services" field) */
+/* Title & subtitle sizes stay identical to other packages                   */
+
+#customPkgCard .pkg-form-overlay {
+  padding: 36px 32px 28px;
+}
+
+#customPkgCard .pkg-form-sub {
+  margin-bottom: 20px;
+}
+
+#customPkgCard .pkg-form .form-group {
+  margin-bottom: 12px;
+}
+
+#customPkgCard .pkg-form label {
+  font-size: 11px;
+  margin-bottom: 3px;
+}
+
+#customPkgCard .pkg-form input {
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+#customPkgCard .pkg-form-submit {
+  height: 48px;
+  margin-top: 10px;
+}
+
 .custom-pkg-header {
   display: block !important;
   grid-template-columns: none !important;
@@ -1377,7 +1388,7 @@ button {
    CLIENTS DISPLAY
 ═══════════════════════════════════════════ */
 .clients-section {
-  padding: 40px 0;
+  padding: 20px 0;
   background: var(--main-bg);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -1385,7 +1396,7 @@ button {
 
 .clients-section .section-inner {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .clients-display {
@@ -1499,13 +1510,13 @@ button {
    TESTIMONIALS
 ═══════════════════════════════════════════ */
 .testimonials-section {
-  padding: 50px 0;
+  padding: 20px 0;
   background: var(--light);
 }
 
 .testimonials-section .section-inner {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .testimonials-section .section-desc {
@@ -1974,6 +1985,11 @@ button {
     flex-shrink: 0;
     white-space: nowrap;
   }
+
+  .slide-label {
+    font-size: 14px;
+    padding: 7px 18px;
+  }
 }
 
 /* ════════════════════════════════════════════
@@ -2065,6 +2081,13 @@ button {
   /* Other existing 768 styles */
   .carousel-slide {
     padding: 40px 32px;
+  }
+
+  .slide-label {
+    font-size: 12px;
+    padding: 6px 16px;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
   }
 
   .carousel-btn {
@@ -2313,6 +2336,12 @@ button {
 
   .slide-title {
     font-size: 38px;
+  }
+
+  .slide-label {
+    font-size: 11px;
+    padding: 5px 14px;
+    margin-bottom: 12px;
   }
 
   .footer-inner {
@@ -2607,20 +2636,3 @@ button {
   transition-delay: calc(var(--stagger-idx, 0) * 0.1s);
 }
 
-
-.packages-grid {
-  padding: 0 20px;
-}
-
-.section-inner {
-  padding: 0 20px;
-}
-
-
-.packages-grid {
-  padding: 0 20px;
-}
-
-.section-inner {
-  padding: 0 20px;
-}
