@@ -3323,11 +3323,7 @@ button {
   margin: 0;
 }
 
-/* Hover Effect: Ultra Slow Movement */
-.branding-marquee-viewport:hover .branding-marquee-track {
-  animation-duration: 110s;
-  /* Slower hover movement for a more premium feel */
-}
+/* Hover effect handled by JavaScript */
 
 /* Responsive */
 @media (max-width: 1200px) {

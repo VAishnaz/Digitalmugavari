@@ -407,6 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
      BRANDING CAROUSEL (MOBILE)
   ────────────────────────────────────── */
   const brandingViewport = document.getElementById('brandingViewport');
+  const brandingTrack = document.getElementById('brandingTrack');
   const brandingPrev = document.getElementById('brandingPrev');
   const brandingNext = document.getElementById('brandingNext');
 
@@ -419,6 +420,17 @@ document.addEventListener('DOMContentLoaded', () => {
     brandingNext.addEventListener('click', () => {
       const scrollAmount = window.innerWidth * 0.85;
       brandingViewport.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+
+  /* Pause marquee on hover, resume on leave */
+  if (brandingTrack) {
+    brandingViewport.addEventListener('mouseenter', () => {
+      brandingTrack.style.animationPlayState = 'paused';
+    });
+
+    brandingViewport.addEventListener('mouseleave', () => {
+      brandingTrack.style.animationPlayState = 'running';
     });
   }
 
