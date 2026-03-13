@@ -3252,20 +3252,15 @@ button {
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: brandingMarquee 25s linear infinite;
   will-change: transform;
-  transition: animation-duration 0.5s ease;
 }
 
-@keyframes brandingMarquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(calc(-50% - 10px));
-  }
+/* When marquee viewport is hovered, dim non-hovered items' pointer events */
+.branding-marquee-track .fun-fact__item .media {
+  pointer-events: auto;
 }
+
+/* brandingMarquee keyframes removed — animation is now driven by JS for glitch-free hover slowdown */
 
 /* Restore Fun Fact Item Style */
 .branding-marquee-track .fun-fact__item {
@@ -3281,13 +3276,11 @@ button {
   overflow: hidden;
   border-radius: 12px;
   cursor: pointer;
-  height: 300px;
 }
 
 .branding-marquee-track .fun-fact__item .media img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   border-radius: 12px;
   transition: filter 0.4s ease, transform 0.4s ease;
   display: block;
@@ -3352,9 +3345,7 @@ button {
     width: 350px;
   }
 
-  .branding-marquee-track .fun-fact__item .media {
-    height: 240px;
-  }
+
 }
 
 @media (max-width: 900px) {
@@ -3387,7 +3378,8 @@ button {
   }
 
   .branding-para {
-    flex: none; /* Prevents the desktop flex-basis from setting a fixed 200px height in column layout */
+    flex: none;
+    /* Prevents the desktop flex-basis from setting a fixed 200px height in column layout */
   }
 
   .branding-para p {
@@ -3409,11 +3401,12 @@ button {
   .branding-nav-btn {
     display: flex;
     position: absolute;
-    top: calc(140px);
-    /* Adjusting since we removed 10px viewport padding */
+    top: calc(100px);
+    /* Moved up from 140px */
     transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    /* Smaller from 36px */
+    height: 28px;
     background: rgba(180, 180, 180, 0.4);
     backdrop-filter: blur(4px);
     color: white;
@@ -3426,16 +3419,19 @@ button {
   }
 
   .branding-nav-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    /* Smaller from 18px */
+    height: 14px;
   }
 
   .branding-prev {
-    left: 10px;
+    left: 2px;
+    /* Moved closer to edge */
   }
 
   .branding-next {
-    right: 10px;
+    right: 2px;
+    /* Moved closer to edge */
   }
 
   .branding-marquee-viewport {
@@ -3455,7 +3451,6 @@ button {
   }
 
   .branding-marquee-track {
-    animation: none !important;
     transform: none !important;
     width: max-content;
   }
@@ -3465,9 +3460,7 @@ button {
     scroll-snap-align: center;
   }
 
-  .branding-marquee-track .fun-fact__item .media {
-    height: 280px;
-  }
+
 }
 
 /* ========== UTILITIES ========== */

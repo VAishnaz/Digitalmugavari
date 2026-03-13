@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (brandingViewport && brandingPrev && brandingNext) {
     brandingPrev.addEventListener('click', () => {
-      const scrollAmount = window.innerWidth * 0.85; // matches 85vw width mostly
+      const scrollAmount = window.innerWidth * 0.85;
       brandingViewport.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     });
 
@@ -423,15 +423,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Pause marquee on hover, resume on leave */
-  if (brandingTrack) {
-    brandingViewport.addEventListener('mouseenter', () => {
-      brandingTrack.style.animationPlayState = 'paused';
-    });
+  /* ──────────────────────────────────────
+     JS-DRIVEN MARQUEE (glitch-free hover)
+  ────────────────────────────────────── */
+  if (brandingTrack && brandingViewport) {
+    const SPEED_UPS = 80; // Pixels per second (normal)
+    const SPEED_SLOW = 20; // Pixels per second (hovered)
+    const LERP_FACTOR = 0.05;
 
-    brandingViewport.addEventListener('mouseleave', () => {
-      brandingTrack.style.animationPlayState = 'running';
-    });
+    let currentSpeed = SPEED_UPS;
+    let targetSpeed = SPEED_UPS;
+    let offset = 0;
+    let lastTime = performance.now();
+    let resetPoint = 0;
+    let isMobile = false;
+
+    function updateMetrics() {
+      isMobile = window.innerWidth <= 768;
+      const items = brandingTrack.querySelectorAll('.fun-fact__item');
+      if (items.length >= 2) {
+        // Find the first duplicate (which should be halfway)
+        const halfIndex = Math.floor(items.length / 2);
+        const first = items[0].getBoundingClientRect();
+        const firstDuplicate = items[halfIndex].getBoundingClientRect();
+        // The distance between the start of the first item and the start of the duplicate
+        resetPoint = firstDuplicate.left - first.left;
+      }
+    }
+
+    // Initialize metrics
+    updateMetrics();
+    window.addEventListener('resize', updateMetrics);
+    window.addEventListener('load', updateMetrics);
+
+    function tick(now) {
+      if (isMobile) {
+        lastTime = now;
+        requestAnimationFrame(tick);
+        return;
+      }
+
+      const deltaTime = (now - lastTime) / 1000; // in seconds
+      lastTime = now;
+
+      // Smoothly adjust speed
+      currentSpeed += (targetSpeed - currentSpeed) * LERP_FACTOR;
+
+      // Increment offset based on time, not frames
+      offset += currentSpeed * deltaTime;
+
+      // Wrap around seamlessly
+      if (resetPoint > 0) {
+        if (offset >= resetPoint) {
+          offset %= resetPoint;
+        }
+      } else {
+        // Fallback or retry metrics if not yet available
+        updateMetrics();
+      }
+
+      brandingTrack.style.transform = `translate3d(-${offset}px, 0, 0)`;
+      requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+
+    brandingViewport.addEventListener('mouseenter', () => targetSpeed = SPEED_SLOW);
+    brandingViewport.addEventListener('mouseleave', () => targetSpeed = SPEED_UPS);
+    
+    // Periodically refresh metrics in the first few seconds to catch layout shifts
+    let refreshCount = 0;
+    const refreshInterval = setInterval(() => {
+      updateMetrics();
+      if (++refreshCount > 10) clearInterval(refreshInterval);
+    }, 500);
   }
 
   /* ──────────────────────────────────────
