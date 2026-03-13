@@ -614,19 +614,19 @@ button {
 }
 
 .slide-1 {
-  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('images/digital.png');
+  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('assets/images/digital.png');
 }
 
 .slide-2 {
-  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('images/search%20eo.png');
+  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('assets/images/search%20eo.png');
 }
 
 .slide-3 {
-  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('images/brandding.png');
+  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('assets/images/brandding.png');
 }
 
 .slide-4 {
-  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('images/webb.png');
+  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('assets/images/webb.png');
 }
 
 /* Decorative geometric backgrounds */
