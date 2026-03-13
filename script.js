@@ -404,6 +404,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ──────────────────────────────────────
+     BRANDING CAROUSEL (MOBILE)
+  ────────────────────────────────────── */
+  const brandingViewport = document.getElementById('brandingViewport');
+  const brandingPrev = document.getElementById('brandingPrev');
+  const brandingNext = document.getElementById('brandingNext');
+
+  if (brandingViewport && brandingPrev && brandingNext) {
+    brandingPrev.addEventListener('click', () => {
+      const scrollAmount = window.innerWidth * 0.85; // matches 85vw width mostly
+      brandingViewport.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    brandingNext.addEventListener('click', () => {
+      const scrollAmount = window.innerWidth * 0.85;
+      brandingViewport.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+
+  /* ──────────────────────────────────────
      PACKAGES — DYNAMIC HIGHLIGHTING
   ────────────────────────────────────── */
   const pkgCards = document.querySelectorAll('.pkg-card');
