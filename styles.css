@@ -926,12 +926,12 @@ button {
   border-color: rgba(255, 255, 255, .4) !important;
 }
 
-.pkg-featured .custom-cb:checked + .custom-cb-box {
+.pkg-featured .custom-cb:checked+.custom-cb-box {
   background: var(--white) !important;
   border-color: var(--white) !important;
 }
 
-.pkg-featured .custom-cb:checked + .custom-cb-box::after {
+.pkg-featured .custom-cb:checked+.custom-cb-box::after {
   border-color: var(--accent) !important;
 }
 
@@ -1121,7 +1121,7 @@ button {
   visibility: hidden;
   transform: translateY(10px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-y: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -2036,48 +2036,123 @@ button {
   /* Service Detail Modal: Even smaller and higher for Tablet */
   .modal-overlay {
     align-items: flex-start;
-    padding-top: 40px; /* Reduced from clamp to move it even higher */
+    padding-top: 40px;
   }
 
   .sd-modal-box {
-    max-width: 440px; /* Reduced from 500px */
-    padding: 30px 24px; /* Reduced padding */
+    max-width: 440px;
+    padding: 24px 20px;
     margin-bottom: 20px;
   }
 
   .sd-title {
-    font-size: 26px; /* Further reduced */
+    font-size: 24px;
+    margin-bottom: 6px;
   }
 
   .sd-desc {
-    font-size: 14px;
-    margin-bottom: 16px;
+    font-size: 13.5px;
+    margin-bottom: 12px;
+    line-height: 1.4;
   }
 
   .sd-icon {
-    width: 48px; /* Further reduced */
-    height: 48px;
-    margin-bottom: 16px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
   }
 
   .sd-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 
   .sd-modal-footer {
-    margin-top: 24px;
+    margin-top: 16px;
+    padding-top: 12px;
   }
 
   /* Service Detail Modal We Do: One column for Tablet */
   .we-do-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
+  }
+
+  .sd-we-do {
+    margin-bottom: 16px;
+    padding-top: 12px;
+  }
+
+  .we-do-label {
+    margin-bottom: 10px;
   }
 
   .we-do-item {
-    font-size: 14px;
+    font-size: 13px;
+    padding: 4px 0;
+  }
+
+  .sd-cta {
+    padding: 12px 24px;
+  }
+
+  /* Package Form Overlay: Compact to fit in 480px card without scroll */
+  .pkg-form-overlay,
+  #customPkgCard .pkg-form-overlay {
+    padding: 24px 20px;
+    overflow-y: hidden;
+  }
+
+  .pkg-form-title {
+    font-size: 24px;
+    margin-bottom: 2px;
+  }
+
+  .pkg-form-sub {
+    font-size: 12.5px;
+    margin-bottom: 16px;
+  }
+
+  #customPkgCard .pkg-form-sub {
+    margin-bottom: 10px;
+  }
+
+  .pkg-form .form-group {
+    margin-bottom: 14px;
+  }
+
+  #customPkgCard .pkg-form .form-group {
+    margin-bottom: 10px;
+  }
+
+  #customPkgCard .pkg-form label {
+    margin-bottom: 2px;
+    font-size: 10px;
+  }
+
+  .pkg-form input {
+    padding: 8px 0;
+    font-size: 13.5px;
+  }
+
+  #customPkgCard .pkg-form input {
     padding: 6px 0;
+    font-size: 12px;
+  }
+
+  .pkg-form-submit {
+    height: 44px;
+    margin-top: 12px;
+  }
+
+  #customPkgCard .pkg-form-submit {
+    height: 42px;
+    margin-top: 6px;
+  }
+
+  .pkg-form-close {
+    top: 12px;
+    right: 12px;
   }
 
   /* Custom Package Checkboxes: Single column, compact, no scroll */
@@ -2102,18 +2177,22 @@ button {
   #customPkgCard {
     padding: 22px 20px;
   }
+
   #customPkgCard .pkg-name {
     margin-bottom: 4px;
     font-size: 22px;
   }
+
   #customPkgCard .pkg-desc {
     margin-bottom: 10px;
     font-size: 12.5px;
     line-height: 1.5;
   }
+
   .custom-pkg-header {
     margin-bottom: 12px;
   }
+
   .custom-counter {
     margin-top: 6px;
     font-size: 10px;
