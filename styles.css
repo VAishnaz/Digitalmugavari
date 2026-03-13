@@ -32,15 +32,15 @@
   /* Card Background */
   --main-bg: #f4eedd;
   /* Main Background */
-  --accent: #7a2636;
+  --accent: #75161b;
   /* Primary Maroon */
-  --accent-light: #b86a79;
+  --accent-light: #ac555b;
   /* Accent Light */
-  --accent-muted: #4b1621;
+  --accent-muted: #5d1115;
   /* Hover Maroon */
-  --shadow-sm: 0 2px 8px rgba(122, 38, 54, .06);
-  --shadow-md: 0 8px 32px rgba(122, 38, 54, .1);
-  --shadow-lg: 0 20px 60px rgba(122, 38, 54, .14);
+  --shadow-sm: 0 2px 8px rgba(117, 22, 27, .06);
+  --shadow-md: 0 8px 32px rgba(117, 22, 27, .1);
+  --shadow-lg: 0 20px 60px rgba(117, 22, 27, .14);
   --radius: 12px;
   --radius-sm: 8px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -112,7 +112,7 @@ button {
 }
 
 .site-header.scrolled {
-  box-shadow: 0 4px 24px rgba(122, 38, 54, .1);
+  box-shadow: 0 4px 24px rgba(117, 22, 27, .1);
 }
 
 .header-inner {
@@ -186,7 +186,7 @@ button {
 .search-bar:focus-within {
   border-color: var(--accent);
   background: var(--white);
-  box-shadow: 0 0 0 3px rgba(122, 38, 54, .15);
+  box-shadow: 0 0 0 3px rgba(117, 22, 27, .15);
 }
 
 .search-icon {
@@ -377,7 +377,7 @@ button {
   bottom: 0;
   height: 100vh;
   z-index: 2000;
-  background: rgba(75, 22, 33, .4);
+  background: rgba(93, 17, 21, .4);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -550,7 +550,7 @@ button {
 .sd-cta:hover {
   transform: translateY(-2px);
   background: var(--accent-muted);
-  box-shadow: 0 12px 24px rgba(122, 38, 54, 0.3);
+  box-shadow: 0 12px 24px rgba(117, 22, 27, 0.3);
 }
 
 /* Modal Contact Footer */
@@ -560,7 +560,7 @@ button {
   justify-content: flex-end;
   align-items: center;
   gap: 16px;
-  border-top: 1px solid rgba(122, 38, 54, 0.1);
+  border-top: 1px solid rgba(117, 22, 27, 0.1);
   padding-top: 16px;
 }
 
@@ -622,7 +622,7 @@ button {
 }
 
 .slide-3 {
-  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('images/brandd.png');
+  background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.8)), url('images/brandding.png');
 }
 
 .slide-4 {
@@ -694,10 +694,10 @@ button {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--white);
-  background: rgba(122, 38, 54, 0.25);
+  background: rgba(117, 22, 27, 0.25);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(184, 106, 121, 0.4);
+  border: 1px solid rgba(172, 85, 91, 0.4);
   padding: 8px 20px;
   border-radius: 50px;
   margin-bottom: 22px;
@@ -732,14 +732,14 @@ button {
   font-size: 14px;
   font-weight: 600;
   transition: var(--transition);
-  box-shadow: 0 8px 24px rgba(122, 38, 54, .35);
+  box-shadow: 0 8px 24px rgba(117, 22, 27, .35);
 }
 
 .slide-cta:hover {
   background: var(--accent-muted);
   color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(122, 38, 54, .5);
+  box-shadow: 0 12px 32px rgba(117, 22, 27, .5);
 }
 
 .slide-cta span {
@@ -904,7 +904,7 @@ button {
 }
 
 .pkg-featured {
-  background: linear-gradient(145deg, var(--accent) 0%, #5a1a26 100%);
+  background: linear-gradient(145deg, var(--accent) 0%, #510f12 100%);
   border-color: transparent;
 }
 
@@ -1100,7 +1100,7 @@ button {
 .pkg-cta:hover {
   transform: translateY(-2px);
   background: var(--accent-muted);
-  box-shadow: 0 8px 24px rgba(122, 38, 54, .3);
+  box-shadow: 0 8px 24px rgba(117, 22, 27, .3);
 }
 
 .pkg-featured .pkg-cta:hover {
@@ -1230,7 +1230,7 @@ button {
 .pkg-form-submit:hover {
   background: var(--accent-muted);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(122, 38, 54, .2);
+  box-shadow: 0 8px 20px rgba(117, 22, 27, .2);
 }
 
 .pkg-form-submit:active {
@@ -1303,7 +1303,7 @@ button {
 
 .custom-cb-label:hover {
   border-color: var(--accent-light);
-  background: rgba(122, 38, 54, .04);
+  background: rgba(117, 22, 27, .04);
 }
 
 .custom-cb {
@@ -1350,7 +1350,7 @@ button {
 
 .custom-cb-label:has(.custom-cb:checked) {
   border-color: var(--accent);
-  background: rgba(122, 38, 54, .06);
+  background: rgba(117, 22, 27, .06);
 }
 
 .custom-counter {
@@ -1708,7 +1708,7 @@ button {
 ═══════════════════════════════════════════ */
 .contact-cta {
   padding: 50px 32px 40px;
-  background: #5a1a26;
+  background: #510f12;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1773,7 +1773,7 @@ button {
   background: var(--accent-muted);
   color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(122, 38, 54, .35);
+  box-shadow: 0 12px 32px rgba(117, 22, 27, .35);
 }
 
 .cta-btn-secondary {
@@ -1784,7 +1784,7 @@ button {
   padding: 0 32px;
   background: transparent;
   color: var(--white);
-  border: 1.5px solid rgba(184, 106, 121, .4);
+  border: 1.5px solid rgba(172, 85, 91, .4);
   border-radius: 50px;
   font-size: 15px;
   font-weight: 600;
@@ -1793,7 +1793,7 @@ button {
 
 .cta-btn-secondary:hover {
   border-color: var(--accent-light);
-  background: rgba(184, 106, 121, .1);
+  background: rgba(172, 85, 91, .1);
   transform: translateY(-2px);
 }
 
@@ -1801,7 +1801,7 @@ button {
    FOOTER
 ═══════════════════════════════════════════ */
 .site-footer {
-  background: #5a1a26;
+  background: #510f12;
   padding: 0;
   margin-top: -1px;
   border-top: none;
